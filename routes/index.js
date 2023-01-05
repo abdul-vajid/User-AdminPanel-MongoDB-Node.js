@@ -8,13 +8,17 @@ var connection = require("../config/mongo-connection");
 const { doSearch } = require("../helpers/user-helpers");
 const userHelpers = require("../helpers/user-helpers");
 
+let num=3.14;
+
+let x = num;
+
 router.get("/", (req, res) => {
   let err = req.session.userLoginError;
   if (req.session.userLoggedIn) {
     res.redirect("index");
   } else {
-    req.session.err = null;
-    res.render("login", { err });
+    req.session.userLoginError=""
+    res.render("login", { err });  
   }
 });
 router.get("/index", (req, res) => {
@@ -77,13 +81,14 @@ router.get("/admin-login", (req, res, next) => {
   if (req.session.adminLoggedIn == true) {
     res.redirect("admin");
   } else {
-    req.session.err = null;
+    req.session.adminLoginError = null;
     res.render("admin-login", { err });
   }
 });
 
 router.get("/admin-signOut", (req, res) => {
-  req.session.adminsession = false;
+  // req.session.adminsession = false;
+  req.session.adminLoggedIn = false;
   res.redirect("/");
 });
 
@@ -137,3 +142,4 @@ router.get("/search", async (req, res) => {
 });
 
 module.exports = router;
+

@@ -13,7 +13,7 @@
 
 <body>
   <div class="row justify-content-center mt-5">
-    <div class="col-4 mt-5 bg-dark justify-content-center">
+    <div class="col-lg-4 col-md-8 col-sm-10 mt-5 bg-dark justify-content-center">
       <form onsubmit="return submitform(event)" action="/log" class="justify-content-center" method="post" id="logform">
         <div class="form-row m-5">
           <h3 class="fw-bold text-white mb-4">User Login</h3>
@@ -26,7 +26,7 @@
           <div id="err">
             <!-- validation code -->
           </div>
-          <% if(err&& err!==""){ %>
+          <% if(err&& err!==null){ %>
             <div class="alert alert-warning alert-dismissible fade show py-1 pe-5" role="alert">
               <%= err %>
               <button type="button" class="btn-close py-2" data-bs-dismiss="alert" aria-label="Close"></button>
